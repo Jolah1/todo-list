@@ -7,29 +7,58 @@
     <title>Okunlade Jolade's Todo App</title>
   </head>
   <body>
-      <input id="todo-title" type="text"></input>
+    <input id="todo-title" type="text" />
+    <input id="date-picker" type="date" />
     <button onclick="addTodo()">Add Todo</button>
-    <script>
-      let todos = ["Get groceries", "Wash car", "Make dinner"];
 
-      todos.forEach(function (todoTitle) {
-        let element = document.createElement("div");
-        element.innerText = todoTitle;
-        document.body.appendChild(element);
-      });
-      function addTodo() {
-          let textbox = document.getElementById('todo-title');
-          let title = textbox.value;
-        todos.push('title');
+    <div id="todo-list"></div>
+    <script>
+        const todos = [{
+        title: 'Get groceries',
+        dueDate: 2022-04-16
+      }, {
+         title: 'Wash car',
+         dueDate: 2022-05-15
+       }, { 
+       title: 'Make dinner',
+       dueDate: 2022-04-23
+       }];
+       
+
 
         todos.forEach(function (todoTitle) {
-        let element = document.createElement("div");
-        element.innerText = todoTitle;
-        document.body.appendChild(element);
-      });
+          const element = document.createElement("div");
+          element.innerText = todoTitle;
+          document.body.appendChild(element);
+        });
 
-      
+        render ();
+
+        function addTodo() {
+            const textbox = document.getElementById('todo-title');
+            const title = textbox.value;
+            const datePicker = document.getElementById('date-picker');
+            const dueDate = datePicker.value;
+          todos.push({
+            tittle: title,
+            dueDate: dueDate
+          });
+         render ();
+        }
+          function render (); {
+            document.body.appendChild(element).innerHTML = '';
+
+          todos.forEach(function (todoTitle) {
+          const element = document.createElement("div");
+          element.innerText = todoTitle;
+          const todoList = document.getElementById('todo-list');
+          todoList.appendChild(element);
+
+        });
       }
+
+
+        }
     </script>
   </body>
 </html>
